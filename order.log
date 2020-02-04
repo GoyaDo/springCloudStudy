@@ -1,0 +1,605 @@
+DEBUG main druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000} created
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000, rs-50000} query executed. 81.344 millis. /* ping */ SELECT 1
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} open
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} Header: [1]
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} Result: [1]
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} closed
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000} closed
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8882-exec-2 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8882-exec-2 druid.sql.Connection - {conn-10001} setAutoCommit false
+DEBUG http-nio-8882-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} created. insert into c_order (amount, create_by, create_date, delete_date, finish_date, order_no, order_status, update_by, update_date, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+DEBUG http-nio-8882-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [6.66, sys, 2020-02-04 17:29:00.188, null, null, 1580808540073, 0, sys, 2020-02-04 17:29:00.188, 402880e7700f860901700f8810200000]
+DEBUG http-nio-8882-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [DOUBLE, VARCHAR, TIMESTAMP, TIMESTAMP, TIMESTAMP, VARCHAR, VARCHAR, VARCHAR, TIMESTAMP, VARCHAR]
+DEBUG http-nio-8882-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} update executed. effort 1. 14.181 millis. insert into c_order (amount, create_by, create_date, delete_date, finish_date, order_no, order_status, update_by, update_date, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+DEBUG http-nio-8882-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8882-exec-2 druid.sql.Statement - {conn-10001, pstmt-20002} created. insert into c_order_detail (amount, create_by, create_date, good_id, good_name, order_id, price, quantity, update_by, update_date, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+DEBUG http-nio-8882-exec-2 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [null, sys, 2020-02-04 17:29:00.224, 1, null, null, 3.33, 1, sys, 2020-02-04 17:29:00.224, 402880e7700f860901700f8810400001]
+DEBUG http-nio-8882-exec-2 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [DOUBLE, VARCHAR, TIMESTAMP, VARCHAR, VARCHAR, VARCHAR, DOUBLE, INTEGER, VARCHAR, TIMESTAMP, VARCHAR]
+ERROR http-nio-8882-exec-2 druid.sql.Statement - {conn-10001, pstmt-20002} execute error. insert into c_order_detail (amount, create_by, create_date, good_id, good_name, order_id, price, quantity, update_by, update_date, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+java.sql.SQLIntegrityConstraintViolationException: Column 'good_name' cannot be null
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:955)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1094)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1042)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1345)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1027)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_executeUpdate(FilterChainImpl.java:3201)
+	at com.alibaba.druid.filter.FilterAdapter.preparedStatement_executeUpdate(FilterAdapter.java:1091)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_executeUpdate(FilterChainImpl.java:3199)
+	at com.alibaba.druid.filter.FilterAdapter.preparedStatement_executeUpdate(FilterAdapter.java:1091)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_executeUpdate(FilterEventAdapter.java:491)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_executeUpdate(FilterChainImpl.java:3199)
+	at com.alibaba.druid.wall.WallFilter.preparedStatement_executeUpdate(WallFilter.java:654)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_executeUpdate(FilterChainImpl.java:3199)
+	at com.alibaba.druid.filter.FilterAdapter.preparedStatement_executeUpdate(FilterAdapter.java:1091)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_executeUpdate(FilterEventAdapter.java:491)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_executeUpdate(FilterChainImpl.java:3199)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.executeUpdate(PreparedStatementProxyImpl.java:194)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.executeUpdate(DruidPooledPreparedStatement.java:256)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:175)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3176)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3690)
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:90)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:604)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:478)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:356)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:39)
+	at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1454)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:511)
+	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:3290)
+	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:2486)
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:473)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:178)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.access$300(JdbcResourceLocalTransactionCoordinatorImpl.java:39)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:271)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:104)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:532)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:746)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:714)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:534)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:305)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.repository.core.support.SurroundingTransactionDetectorMethodInterceptor.invoke(SurroundingTransactionDetectorMethodInterceptor.java:61)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy139.save(Unknown Source)
+	at com.elevengeek.goya.service.OrderServiceImpl.saveOrder(OrderServiceImpl.java:36)
+	at com.elevengeek.goya.controller.OrderController.saveOrder(OrderController.java:35)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:892)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1039)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:836)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1747)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+DEBUG http-nio-8882-exec-2 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8882-exec-2 druid.sql.Statement - {conn-10001, pstmt-20002} closed
+DEBUG http-nio-8882-exec-2 druid.sql.Connection - {conn 10001} rollback
+DEBUG http-nio-8882-exec-2 druid.sql.Connection - {conn-10001} setAutoCommit true
+DEBUG http-nio-8882-exec-2 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8882-exec-3 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8882-exec-3 druid.sql.Connection - {conn-10001} setAutoCommit false
+DEBUG http-nio-8882-exec-3 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [6.66, sys, 2020-02-04 17:29:37.021, null, null, 1580808577016, 0, sys, 2020-02-04 17:29:37.021, 402880e7700f860901700f889ffd0002]
+DEBUG http-nio-8882-exec-3 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [DOUBLE, VARCHAR, TIMESTAMP, TIMESTAMP, TIMESTAMP, VARCHAR, VARCHAR, VARCHAR, TIMESTAMP, VARCHAR]
+DEBUG http-nio-8882-exec-3 druid.sql.Statement - {conn-10001, pstmt-20001} update executed. effort 1. 24.8243 millis. insert into c_order (amount, create_by, create_date, delete_date, finish_date, order_no, order_status, update_by, update_date, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+DEBUG http-nio-8882-exec-3 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8882-exec-3 druid.sql.Statement - {conn-10001, pstmt-20003} created. insert into c_order_detail (amount, create_by, create_date, good_id, good_name, order_id, price, quantity, update_by, update_date, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+DEBUG http-nio-8882-exec-3 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [3.33, sys, 2020-02-04 17:29:37.022, 1, null, null, 3.33, 1, sys, 2020-02-04 17:29:37.022, 402880e7700f860901700f889fff0003]
+DEBUG http-nio-8882-exec-3 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [DOUBLE, VARCHAR, TIMESTAMP, VARCHAR, VARCHAR, VARCHAR, DOUBLE, INTEGER, VARCHAR, TIMESTAMP, VARCHAR]
+ERROR http-nio-8882-exec-3 druid.sql.Statement - {conn-10001, pstmt-20003} execute error. insert into c_order_detail (amount, create_by, create_date, good_id, good_name, order_id, price, quantity, update_by, update_date, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+java.sql.SQLIntegrityConstraintViolationException: Column 'good_name' cannot be null
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:955)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1094)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1042)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1345)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1027)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_executeUpdate(FilterChainImpl.java:3201)
+	at com.alibaba.druid.filter.FilterAdapter.preparedStatement_executeUpdate(FilterAdapter.java:1091)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_executeUpdate(FilterChainImpl.java:3199)
+	at com.alibaba.druid.filter.FilterAdapter.preparedStatement_executeUpdate(FilterAdapter.java:1091)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_executeUpdate(FilterEventAdapter.java:491)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_executeUpdate(FilterChainImpl.java:3199)
+	at com.alibaba.druid.wall.WallFilter.preparedStatement_executeUpdate(WallFilter.java:654)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_executeUpdate(FilterChainImpl.java:3199)
+	at com.alibaba.druid.filter.FilterAdapter.preparedStatement_executeUpdate(FilterAdapter.java:1091)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_executeUpdate(FilterEventAdapter.java:491)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_executeUpdate(FilterChainImpl.java:3199)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.executeUpdate(PreparedStatementProxyImpl.java:194)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.executeUpdate(DruidPooledPreparedStatement.java:256)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:175)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3176)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3690)
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:90)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:604)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:478)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:356)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:39)
+	at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1454)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:511)
+	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:3290)
+	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:2486)
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:473)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:178)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.access$300(JdbcResourceLocalTransactionCoordinatorImpl.java:39)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:271)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:104)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:532)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:746)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:714)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:534)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:305)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.repository.core.support.SurroundingTransactionDetectorMethodInterceptor.invoke(SurroundingTransactionDetectorMethodInterceptor.java:61)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy139.save(Unknown Source)
+	at com.elevengeek.goya.service.OrderServiceImpl.saveOrder(OrderServiceImpl.java:36)
+	at com.elevengeek.goya.controller.OrderController.saveOrder(OrderController.java:35)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:892)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1039)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:836)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1747)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+DEBUG http-nio-8882-exec-3 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8882-exec-3 druid.sql.Statement - {conn-10001, pstmt-20003} closed
+DEBUG http-nio-8882-exec-3 druid.sql.Connection - {conn 10001} rollback
+DEBUG http-nio-8882-exec-3 druid.sql.Connection - {conn-10001} setAutoCommit true
+DEBUG http-nio-8882-exec-3 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8882-exec-6 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8882-exec-6 druid.sql.Connection - {conn-10001} setAutoCommit false
+DEBUG http-nio-8882-exec-6 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [6.66, sys, 2020-02-04 17:30:00.823, null, null, 1580808600821, 0, sys, 2020-02-04 17:30:00.823, 402880e7700f860901700f88fcf70004]
+DEBUG http-nio-8882-exec-6 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [DOUBLE, VARCHAR, TIMESTAMP, TIMESTAMP, TIMESTAMP, VARCHAR, VARCHAR, VARCHAR, TIMESTAMP, VARCHAR]
+DEBUG http-nio-8882-exec-6 druid.sql.Statement - {conn-10001, pstmt-20001} update executed. effort 1. 1.0263 millis. insert into c_order (amount, create_by, create_date, delete_date, finish_date, order_no, order_status, update_by, update_date, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+DEBUG http-nio-8882-exec-6 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8882-exec-6 druid.sql.Statement - {conn-10001, pstmt-20004} created. insert into c_order_detail (amount, create_by, create_date, good_id, good_name, order_id, price, quantity, update_by, update_date, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+DEBUG http-nio-8882-exec-6 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [3.33, sys, 2020-02-04 17:30:00.824, 1, null, null, 3.33, 1, sys, 2020-02-04 17:30:00.824, 402880e7700f860901700f88fcf90005]
+DEBUG http-nio-8882-exec-6 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [DOUBLE, VARCHAR, TIMESTAMP, VARCHAR, VARCHAR, VARCHAR, DOUBLE, INTEGER, VARCHAR, TIMESTAMP, VARCHAR]
+ERROR http-nio-8882-exec-6 druid.sql.Statement - {conn-10001, pstmt-20004} execute error. insert into c_order_detail (amount, create_by, create_date, good_id, good_name, order_id, price, quantity, update_by, update_date, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+java.sql.SQLIntegrityConstraintViolationException: Column 'good_name' cannot be null
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:955)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1094)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1042)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1345)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1027)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_executeUpdate(FilterChainImpl.java:3201)
+	at com.alibaba.druid.filter.FilterAdapter.preparedStatement_executeUpdate(FilterAdapter.java:1091)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_executeUpdate(FilterChainImpl.java:3199)
+	at com.alibaba.druid.filter.FilterAdapter.preparedStatement_executeUpdate(FilterAdapter.java:1091)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_executeUpdate(FilterEventAdapter.java:491)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_executeUpdate(FilterChainImpl.java:3199)
+	at com.alibaba.druid.wall.WallFilter.preparedStatement_executeUpdate(WallFilter.java:654)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_executeUpdate(FilterChainImpl.java:3199)
+	at com.alibaba.druid.filter.FilterAdapter.preparedStatement_executeUpdate(FilterAdapter.java:1091)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_executeUpdate(FilterEventAdapter.java:491)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_executeUpdate(FilterChainImpl.java:3199)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.executeUpdate(PreparedStatementProxyImpl.java:194)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.executeUpdate(DruidPooledPreparedStatement.java:256)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:175)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3176)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3690)
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:90)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:604)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:478)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:356)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:39)
+	at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1454)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:511)
+	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:3290)
+	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:2486)
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:473)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:178)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.access$300(JdbcResourceLocalTransactionCoordinatorImpl.java:39)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:271)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:104)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:532)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:746)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:714)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:534)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:305)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.repository.core.support.SurroundingTransactionDetectorMethodInterceptor.invoke(SurroundingTransactionDetectorMethodInterceptor.java:61)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy139.save(Unknown Source)
+	at com.elevengeek.goya.service.OrderServiceImpl.saveOrder(OrderServiceImpl.java:36)
+	at com.elevengeek.goya.controller.OrderController.saveOrder(OrderController.java:35)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:892)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1039)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:836)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1747)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+DEBUG http-nio-8882-exec-6 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8882-exec-6 druid.sql.Statement - {conn-10001, pstmt-20004} closed
+DEBUG http-nio-8882-exec-6 druid.sql.Connection - {conn 10001} rollback
+DEBUG http-nio-8882-exec-6 druid.sql.Connection - {conn-10001} setAutoCommit true
+DEBUG http-nio-8882-exec-6 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8882-exec-7 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8882-exec-7 druid.sql.Connection - {conn-10001} setAutoCommit false
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [6.66, sys, 2020-02-04 17:30:54.253, null, null, 1580808654250, 0, sys, 2020-02-04 17:30:54.253, 402880e7700f860901700f89cdad0006]
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [DOUBLE, VARCHAR, TIMESTAMP, TIMESTAMP, TIMESTAMP, VARCHAR, VARCHAR, VARCHAR, TIMESTAMP, VARCHAR]
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20001} update executed. effort 1. 1.0592 millis. insert into c_order (amount, create_by, create_date, delete_date, finish_date, order_no, order_status, update_by, update_date, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20005} created. insert into c_order_detail (amount, create_by, create_date, good_id, good_name, order_id, price, quantity, update_by, update_date, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20005} Parameters : [3.33, sys, 2020-02-04 17:30:54.254, 1, 王老吉, null, 3.33, 1, sys, 2020-02-04 17:30:54.254, 402880e7700f860901700f89cdaf0007]
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20005} Types : [DOUBLE, VARCHAR, TIMESTAMP, VARCHAR, VARCHAR, VARCHAR, DOUBLE, INTEGER, VARCHAR, TIMESTAMP, VARCHAR]
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20005} update executed. effort 1. 3.0544 millis. insert into c_order_detail (amount, create_by, create_date, good_id, good_name, order_id, price, quantity, update_by, update_date, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20005} clearParameters. 
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} created. update c_order_detail set order_id=? where id=?
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} Parameters : [402880e7700f860901700f89cdad0006, 402880e7700f860901700f89cdaf0007]
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} Types : [VARCHAR, VARCHAR]
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} update executed. effort 1. 1.5058 millis. update c_order_detail set order_id=? where id=?
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} clearParameters. 
+DEBUG http-nio-8882-exec-7 druid.sql.Connection - {conn-10001} commited
+DEBUG http-nio-8882-exec-7 druid.sql.Connection - {conn-10001} setAutoCommit true
+DEBUG http-nio-8882-exec-7 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG RMI TCP Connection(1)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG RMI TCP Connection(1)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG RMI TCP Connection(1)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG RMI TCP Connection(1)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000} created
+DEBUG RMI TCP Connection(1)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000, rs-50000} query executed. 65.2352 millis. /* ping */ SELECT 1
+DEBUG RMI TCP Connection(1)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} open
+DEBUG RMI TCP Connection(1)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} Header: [1]
+DEBUG RMI TCP Connection(1)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} Result: [1]
+DEBUG RMI TCP Connection(1)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} closed
+DEBUG RMI TCP Connection(1)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000} closed
+DEBUG RMI TCP Connection(1)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000} created
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000, rs-50000} query executed. 104.7476 millis. /* ping */ SELECT 1
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} open
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} Header: [1]
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} Result: [1]
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} closed
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000} closed
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8882-exec-4 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8882-exec-4 druid.sql.Statement - {conn-10001, pstmt-20001} created. select corderenti0_.id as id1_0_, corderenti0_.amount as amount2_0_, corderenti0_.create_by as create_b3_0_, corderenti0_.create_date as create_d4_0_, corderenti0_.delete_date as delete_d5_0_, corderenti0_.finish_date as finish_d6_0_, corderenti0_.order_no as order_no7_0_, corderenti0_.order_status as order_st8_0_, corderenti0_.update_by as update_b9_0_, corderenti0_.update_date as update_10_0_ from c_order corderenti0_ where corderenti0_.create_by=? order by corderenti0_.create_date asc
+DEBUG http-nio-8882-exec-4 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [402880e7700f6d3501700f76f0330000]
+DEBUG http-nio-8882-exec-4 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG http-nio-8882-exec-4 druid.sql.Statement - {conn-10001, pstmt-20001, rs-50001} query executed. 17.7462 millis. select corderenti0_.id as id1_0_, corderenti0_.amount as amount2_0_, corderenti0_.create_by as create_b3_0_, corderenti0_.create_date as create_d4_0_, corderenti0_.delete_date as delete_d5_0_, corderenti0_.finish_date as finish_d6_0_, corderenti0_.order_no as order_no7_0_, corderenti0_.order_status as order_st8_0_, corderenti0_.update_by as update_b9_0_, corderenti0_.update_date as update_10_0_ from c_order corderenti0_ where corderenti0_.create_by=? order by corderenti0_.create_date asc
+DEBUG http-nio-8882-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} open
+DEBUG http-nio-8882-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Header: [id, amount, create_by, create_date, delete_date, finish_date, order_no, order_status, update_by, update_date]
+DEBUG http-nio-8882-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} closed
+DEBUG http-nio-8882-exec-4 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8882-exec-4 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8882-exec-5 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8882-exec-5 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [402880e7700f860901700f89cdad0006]
+DEBUG http-nio-8882-exec-5 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG http-nio-8882-exec-5 druid.sql.Statement - {conn-10001, pstmt-20001, rs-50002} query executed. 1.5908 millis. select corderenti0_.id as id1_0_, corderenti0_.amount as amount2_0_, corderenti0_.create_by as create_b3_0_, corderenti0_.create_date as create_d4_0_, corderenti0_.delete_date as delete_d5_0_, corderenti0_.finish_date as finish_d6_0_, corderenti0_.order_no as order_no7_0_, corderenti0_.order_status as order_st8_0_, corderenti0_.update_by as update_b9_0_, corderenti0_.update_date as update_10_0_ from c_order corderenti0_ where corderenti0_.create_by=? order by corderenti0_.create_date asc
+DEBUG http-nio-8882-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} open
+DEBUG http-nio-8882-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} Header: [id, amount, create_by, create_date, delete_date, finish_date, order_no, order_status, update_by, update_date]
+DEBUG http-nio-8882-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} closed
+DEBUG http-nio-8882-exec-5 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8882-exec-5 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000} created
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000, rs-50000} query executed. 59.8189 millis. /* ping */ SELECT 1
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} open
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} Header: [1]
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} Result: [1]
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} closed
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000} closed
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8882-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8882-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} created. select corderenti0_.id as id1_0_, corderenti0_.amount as amount2_0_, corderenti0_.create_by as create_b3_0_, corderenti0_.create_date as create_d4_0_, corderenti0_.delete_date as delete_d5_0_, corderenti0_.finish_date as finish_d6_0_, corderenti0_.order_no as order_no7_0_, corderenti0_.order_status as order_st8_0_, corderenti0_.update_by as update_b9_0_, corderenti0_.update_date as update_10_0_ from c_order corderenti0_ where corderenti0_.create_by=? order by corderenti0_.create_date asc
+DEBUG http-nio-8882-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [402880e7700f860901700f89cdad0006]
+DEBUG http-nio-8882-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG http-nio-8882-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001, rs-50001} query executed. 5.8588 millis. select corderenti0_.id as id1_0_, corderenti0_.amount as amount2_0_, corderenti0_.create_by as create_b3_0_, corderenti0_.create_date as create_d4_0_, corderenti0_.delete_date as delete_d5_0_, corderenti0_.finish_date as finish_d6_0_, corderenti0_.order_no as order_no7_0_, corderenti0_.order_status as order_st8_0_, corderenti0_.update_by as update_b9_0_, corderenti0_.update_date as update_10_0_ from c_order corderenti0_ where corderenti0_.create_by=? order by corderenti0_.create_date asc
+DEBUG http-nio-8882-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} open
+DEBUG http-nio-8882-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Header: [id, amount, create_by, create_date, delete_date, finish_date, order_no, order_status, update_by, update_date]
+DEBUG http-nio-8882-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} closed
+DEBUG http-nio-8882-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8882-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8882-exec-3 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8882-exec-3 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [402880e7700f860901700f89cdad0006]
+DEBUG http-nio-8882-exec-3 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG http-nio-8882-exec-3 druid.sql.Statement - {conn-10001, pstmt-20001, rs-50002} query executed. 1.3498 millis. select corderenti0_.id as id1_0_, corderenti0_.amount as amount2_0_, corderenti0_.create_by as create_b3_0_, corderenti0_.create_date as create_d4_0_, corderenti0_.delete_date as delete_d5_0_, corderenti0_.finish_date as finish_d6_0_, corderenti0_.order_no as order_no7_0_, corderenti0_.order_status as order_st8_0_, corderenti0_.update_by as update_b9_0_, corderenti0_.update_date as update_10_0_ from c_order corderenti0_ where corderenti0_.create_by=? order by corderenti0_.create_date asc
+DEBUG http-nio-8882-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} open
+DEBUG http-nio-8882-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} Header: [id, amount, create_by, create_date, delete_date, finish_date, order_no, order_status, update_by, update_date]
+DEBUG http-nio-8882-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} closed
+DEBUG http-nio-8882-exec-3 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8882-exec-3 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8882-exec-5 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8882-exec-5 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [402880e7700f860901700f89cdad0006]
+DEBUG http-nio-8882-exec-5 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG http-nio-8882-exec-5 druid.sql.Statement - {conn-10001, pstmt-20001, rs-50003} query executed. 1.2558 millis. select corderenti0_.id as id1_0_, corderenti0_.amount as amount2_0_, corderenti0_.create_by as create_b3_0_, corderenti0_.create_date as create_d4_0_, corderenti0_.delete_date as delete_d5_0_, corderenti0_.finish_date as finish_d6_0_, corderenti0_.order_no as order_no7_0_, corderenti0_.order_status as order_st8_0_, corderenti0_.update_by as update_b9_0_, corderenti0_.update_date as update_10_0_ from c_order corderenti0_ where corderenti0_.create_by=? order by corderenti0_.create_date asc
+DEBUG http-nio-8882-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} open
+DEBUG http-nio-8882-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} Header: [id, amount, create_by, create_date, delete_date, finish_date, order_no, order_status, update_by, update_date]
+DEBUG http-nio-8882-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} closed
+DEBUG http-nio-8882-exec-5 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8882-exec-5 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8882-exec-7 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [402880e7700f860901700f89cdad0006]
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20001, rs-50004} query executed. 1.3471 millis. select corderenti0_.id as id1_0_, corderenti0_.amount as amount2_0_, corderenti0_.create_by as create_b3_0_, corderenti0_.create_date as create_d4_0_, corderenti0_.delete_date as delete_d5_0_, corderenti0_.finish_date as finish_d6_0_, corderenti0_.order_no as order_no7_0_, corderenti0_.order_status as order_st8_0_, corderenti0_.update_by as update_b9_0_, corderenti0_.update_date as update_10_0_ from c_order corderenti0_ where corderenti0_.create_by=? order by corderenti0_.create_date asc
+DEBUG http-nio-8882-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50004} open
+DEBUG http-nio-8882-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50004} Header: [id, amount, create_by, create_date, delete_date, finish_date, order_no, order_status, update_by, update_date]
+DEBUG http-nio-8882-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50004} closed
+DEBUG http-nio-8882-exec-7 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8882-exec-7 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000} created
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000, rs-50000} query executed. 99.062 millis. /* ping */ SELECT 1
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} open
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} Header: [1]
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} Result: [1]
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} closed
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000} closed
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000} created
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000, rs-50000} query executed. 89.5084 millis. /* ping */ SELECT 1
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} open
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} Header: [1]
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} Result: [1]
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} closed
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000} closed
+DEBUG RMI TCP Connection(3)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000} created
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000, rs-50000} query executed. 64.7583 millis. /* ping */ SELECT 1
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} open
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} Header: [1]
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} Result: [1]
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.ResultSet - {conn-10001, stmt-20000, rs-50000} closed
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Statement - {conn-10001, stmt-20000} closed
+DEBUG RMI TCP Connection(2)-192.168.0.103 druid.sql.Connection - {conn-10001} pool-recycle

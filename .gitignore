@@ -1,0 +1,9 @@
+# Project exclude paths
+/cloud-config/target/
+/cloud-eureka/target/
+/cloud-good/target/
+/cloud-order/target/
+/cloud-turbine/target/
+/cloud-user/target/
+/cloud-user-center/target/
+/cloud-zuul/target/

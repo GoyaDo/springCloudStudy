@@ -1,0 +1,21 @@
+server:
+  port: 8802
+spring:
+  application:
+    name: cloud-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8801/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,hystrix.stream,routes
+zuul:
+  prefix: /api
+  routes:
+    cloud-user: /user/**
+    cloud-order: /order/**
+    cloud-good: /good/**
+    cloud-user-center: /userCenter/**
